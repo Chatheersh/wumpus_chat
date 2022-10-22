@@ -1,12 +1,15 @@
 
+from agent.agent import Agent
+from agent.beeline_agent import BeelineAgent
 from agent.naive_agent import NaiveAgent
 from environment.action import get_str_rpr
+from environment.agent_state import AgentState
 from environment.environment import Environment
 from environment.environment_factory import EnvironmentFactory
 from environment.percept import Percept
 
 
-def run_episode(environment: Environment, agent: NaiveAgent, percept: Percept) -> float:
+def run_episode(environment: Environment, agent: Agent, percept: Percept) -> float:
     next_action = agent.next_action(percept)
     print(f"Action: {get_str_rpr(next_action)}")
 
@@ -19,7 +22,7 @@ def run_episode(environment: Environment, agent: NaiveAgent, percept: Percept) -
 
 def main():
     environment, percept = EnvironmentFactory().create(4, 4, 0.2, False)
-    agent = NaiveAgent()
+    agent = BeelineAgent(AgentState())
     total_reward = run_episode(environment, agent, percept)
     print(f"Total reward {total_reward}")
 
