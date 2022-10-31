@@ -1,5 +1,5 @@
 from environment.action import Action
-from environment.coordinates import Coordinate
+from environment.coordinate import Coordinate
 from environment.orientation import Orientation
 
 
@@ -54,4 +54,4 @@ class AgentState:
             self.forward(grid_width, grid_height)
     
     def show(self):
-        return f"location: {self.location} orientation: {self.orientation} has_gold: {self.orientation} has_arrow: {self.has_arrow} is_alive: {self.is_alive}"
+        return f"location: ({self.location.x},{self.location.y}) orientation: {self.orientation} has_gold: {self.has_gold} has_arrow: {self.has_arrow} is_alive: {self.is_alive}"

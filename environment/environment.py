@@ -3,7 +3,7 @@ import copy
 from environment.action import Action
 from typing import List
 from environment.agent import Agent
-from environment.coordinates import Coordinate
+from environment.coordinate import Coordinate
 from environment.orientation import Orientation
 from environment.percept import Percept
 
@@ -32,16 +32,16 @@ class Environment:
         return any(coordinate.x == l.x and coordinate.y == l.y for l in self.pit_locations)
 
     def is_wumpus_at(self, coordinate: Coordinate) -> bool:
-        return coordinate.is_equal(self.wumpus_location)
+        return coordinate == self.wumpus_location
 
     def is_agent_at(self, coordinate: Coordinate) -> bool:
-        return coordinate.is_equal(self.agent.location)
+        return coordinate == self.agent.location
     
     def is_glitter(self):
-        return self.agent.location.is_equal(self.gold_location)
+        return self.agent.location == self.gold_location
     
     def is_gold_at(self, coordindate: Coordinate):
-        return coordindate.is_equal(self.gold_location)
+        return coordindate == self.gold_location
     
     def kill_attempt_is_successful(self):
 
@@ -183,7 +183,7 @@ class Environment:
                                   False, 
                                   -1)
             elif action == Action.CLIMB:
-                in_start_location = self.agent.location.is_equal(Coordinate(0, 0))
+                in_start_location = self.agent.location == Coordinate(0, 0)
                 success = self.agent.has_gold and in_start_location
                 is_terminated = success or (self.allow_climb_without_gold and in_start_location)
                 environment = Environment(

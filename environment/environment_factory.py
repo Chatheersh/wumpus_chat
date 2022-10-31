@@ -1,6 +1,6 @@
 import random
 from environment.agent import Agent
-from environment.coordinates import Coordinate
+from environment.coordinate import Coordinate
 from environment.environment import Environment
 from environment.percept import Percept
 

@@ -1,4 +1,4 @@
-from environment.coordinates import Coordinate
+from environment.coordinate import Coordinate
 from environment.orientation import Orientation
 
 
