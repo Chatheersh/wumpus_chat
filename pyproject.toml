@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "wumpus-chat"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "wumpus_chat"}]
+
+[tool.poetry.dependencies]
+python = "3.8.15"
+pomegranate = "^0.14.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
