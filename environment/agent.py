@@ -6,8 +6,8 @@ class Agent:
     def __init__(self, location: Coordinate = Coordinate(0, 0),
                        orientation: Orientation = Orientation.EAST, 
                        has_gold: bool = False,
-                       has_arrow: bool = False,
-                       is_alive: bool = False):
+                       has_arrow: bool = True,
+                       is_alive: bool = True):
         self.location = location
         self.orientation = orientation
         self.has_gold = has_gold

@@ -8,3 +8,6 @@ class Coordinate:
 
     def __hash__(self) -> int:
         return hash(((self.x + self.y)*(self.x + self.y + 1)/2) + self.y)
+
+    def __str__(self):
+        return f"{self.x},{self.y}"

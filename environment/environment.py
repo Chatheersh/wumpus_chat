@@ -206,8 +206,8 @@ class Environment:
                                   999 if success else -1)
             elif action == Action.SHOOT:
                 had_arrow = self.agent.has_arrow
-                self.agent.has_arrow = False
                 wumpus_killed = self.kill_attempt_is_successful()
+                self.agent.has_arrow = False
                 environment = Environment(
                     grid_height=self.grid_height,
                     grid_width=self.grid_width,
