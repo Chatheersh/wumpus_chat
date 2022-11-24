@@ -16,13 +16,13 @@ class BeelineAgent(Agent):
 
     def __init__(self, grid_width, grid_height, 
                        agent_state: AgentState, 
-                       safe_locations: Set[Coordinate], 
+                       visited_locations: Set[Coordinate], 
                        beeline_action_list: List[Action]):
         self.grid_width = grid_width
         self.grid_height = grid_height
         
         self.agent_state = agent_state
-        self.safe_locations = safe_locations
+        self.visited_locations = visited_locations
         self.beeline_action_list = beeline_action_list
 
     def _construct_beeline(self) -> List[Action]:
@@ -32,7 +32,7 @@ class BeelineAgent(Agent):
         max_x_coordinate = 0
         max_y_coordinate = 0
 
-        for coordinate in self.safe_locations:
+        for coordinate in self.visited_locations:
             max_x_coordinate = max(max_x_coordinate, coordinate.x)
             max_y_coordinate = max(max_y_coordinate, coordinate.y)
         
@@ -46,7 +46,7 @@ class BeelineAgent(Agent):
             return grid
         
         safe_locations_grid = Grid(percept_width, percept_height)
-        mark_safe_locations(safe_locations_grid, self.safe_locations)
+        mark_safe_locations(safe_locations_grid, self.visited_locations)
 
         def number_locations(width, height, grid):
             k = width * height - 1
@@ -123,7 +123,7 @@ class BeelineAgent(Agent):
             if random_number == 0:
                 self.agent_state.forward(self.grid_width, self.grid_height)
                 new_location = copy.deepcopy(self.agent_state.location)
-                self.safe_locations.add(new_location)
+                self.visited_locations.add(new_location)
                 return Action.FORWARD
             elif random_number == 1:
                 self.agent_state.turn_left()

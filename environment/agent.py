@@ -35,11 +35,14 @@ class Agent:
             self.orientation = Orientation.EAST
 
     def forward(self, grid_width: int, grid_height: int):
+        self.location = self.get_forward_coordinate(grid_width, grid_height)
+
+    def get_forward_coordinate(self, grid_width: int, grid_height: int):
         if self.orientation == Orientation.WEST:
-            self.location = Coordinate(max(0, self.location.x - 1), self.location.y)
+            return Coordinate(max(0, self.location.x - 1), self.location.y)
         if self.orientation == Orientation.EAST:
-            self.location = Coordinate(min(grid_width - 1, self.location.x + 1), self.location.y)
+            return Coordinate(min(grid_width - 1, self.location.x + 1), self.location.y)
         elif self.orientation == Orientation.SOUTH:
-            self.location = Coordinate(self.location.x, max(0, self.location.y - 1))
+            return Coordinate(self.location.x, max(0, self.location.y - 1))
         elif self.orientation == Orientation.NORTH:
-            self.location = Coordinate(self.location.x, min(grid_height - 1, self.location.y + 1))
+            return Coordinate(self.location.x, min(grid_height - 1, self.location.y + 1))

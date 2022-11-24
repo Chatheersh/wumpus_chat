@@ -41,8 +41,8 @@ class EnvironmentFactory:
         )
 
         percept = Percept(
-            environment.is_stench,
-            environment.is_breeze,
+            environment.is_stench(),
+            environment.is_breeze(),
             False,
             False,
             False,

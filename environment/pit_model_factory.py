@@ -1,5 +1,7 @@
 from pomegranate import *
 
+from environment.pit_model import PitModel
+
 class PitModelFactory:
 
     def __init__(self):
@@ -99,5 +101,6 @@ class PitModelFactory:
                     model.add_edge(pits_nodes_dict[neighbour], s)
 
         model.bake()
-        return pit_indexes, model
+        
+        return PitModel(model, pit_indexes)
     

@@ -27,7 +27,7 @@ def run_episode(environment: Environment, agent: Agent, percept: Percept) -> flo
 def main():
     width = 4
     height = 4
-    environment, percept = EnvironmentFactory().create(width, height, 0.2, False)
+    environment, percept = EnvironmentFactory().create(width, height, 0.2, True)
 
     safe_locations = set()
     safe_locations.add(Coordinate(0, 0))
@@ -35,7 +35,7 @@ def main():
     w_model = WumpusModelFactory().create_model(width, height)
     p_model = PitModelFactory().generate_model(width, height)
 
-    agent = ProbAgent(4, 4, AgentState(), safe_locations, [], [], [], False, w_model, p_model)
+    agent = ProbAgent(4, 4, AgentState(), safe_locations, [], {}, {}, False, w_model, p_model)
     total_reward = run_episode(environment, agent, percept)
     print(f"Total reward {total_reward}")
 
